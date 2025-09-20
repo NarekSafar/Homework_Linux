@@ -12,11 +12,12 @@ public:
     Complex(double a = 0.0, double b = 0.0);
     double getReal() const;
     double getImag() const;
-    Complex sum(const Complex& other) const;
-    Complex diff(const Complex& other) const;
     double abs() const;
-    Complex multiply(double val) const;
-    void print() const;    
+    Complex operator+(const Complex& other) const;
+    Complex operator-(const Complex& other) const;
+    Complex operator*(double val) const;
+    bool operator>(const Complex& other) const;
+    friend std::ostream& operator<<(std::ostream& os, const Complex& c);
 };
 
 #endif //COMPLEX_H
