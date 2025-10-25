@@ -99,6 +99,13 @@ int main(int argc, char* argv[]) {
     }
 
     close(srcFd);
+
+    if (ftruncate(dstFd, fileSize) == -1) {
+        perror("ftruncate error");
+        close(dstFd);
+        exit(1);
+    }
+
     close(dstFd);
 
     std::cout << "Successfully copied " << fileSize
