@@ -23,7 +23,10 @@ int main() {
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = handler;
 
-	sigaction(SIGUSR1, &sa, nullptr);
+	if(sigaction(SIGUSR1, &sa, nullptr) == -1) {
+		std::cerr << "sigaction error\n";
+		exit(1);
+	}
 
 	std::cout << "PID: " << getpid() << '\n';
 
